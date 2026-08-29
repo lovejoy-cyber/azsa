@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   AZSA DESIGN SYSTEM
+   ----------------------------------------------------------------------------
+   Direction: an institutional platform that still feels like it belongs to
+   students, not an embassy brochure. The bookend surfaces (nav, hero, footer)
+   sit in a deep jade -- a confident, saturated green rather than an olive or
+   muddy default -- while content lives on a warm paper canvas. Gold is the
+   editorial accent (headings, dividers, key numerals); brick red is reserved
+   for genuinely urgent moments (deadlines, live badges) so it keeps meaning.
+
+   Signature element: "coursed stone" dividers/patterns -- abstracted rows of
+   stacked, unevenly-sized blocks, a nod to Great Zimbabwe's dry-stone
+   architecture (the country's own namesake, "houses of stone"). Used once,
+   deliberately, as section dividers and a hero corner treatment -- not as
+   wallpaper.
+   ========================================================================= */
+
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";
+@import "@fontsource/fraunces/900.css";
+@import "@fontsource/fraunces/400-italic.css";
+@import "@fontsource/public-sans/400.css";
+@import "@fontsource/public-sans/500.css";
+@import "@fontsource/public-sans/600.css";
+@import "@fontsource/public-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+:root {
+  /* Ink / neutrals */
+  --color-ink: #14201a;
+  --color-ink-soft: #47554c;
+  --color-ink-faint: #7c887f;
+  --color-canvas: #f7f5ee;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #eeebe0;
+  --color-border: #ded9c8;
+  --color-border-strong: #c7c0a9;
+
+  /* Jade -- primary brand */
+  --color-jade-950: #0a2a1f;
+  --color-jade-900: #0e3a2a;
+  --color-jade-800: #124e39;
+  --color-jade-700: #146144;
+  --color-jade-600: #17714f;
+  --color-jade-500: #1c8760;
+  --color-jade-100: #dcefe3;
+  --color-jade-50: #eef6f0;
+
+  /* Gold -- secondary / editorial accent */
+  --color-gold-700: #966a08;
+  --color-gold-600: #b6840a;
+  --color-gold-500: #d19f16;
+  --color-gold-100: #f8ecce;
+  --color-gold-50: #fbf5e6;
+
+  /* Brick -- sparing accent, urgency only */
+  --color-brick-600: #9c3a2c;
+  --color-brick-500: #b64534;
+  --color-brick-100: #f4ddd6;
+
+  /* Semantic states */
+  --color-success: #1c7a4d;
+  --color-warning: #b6840a;
+  --color-error: #a3312a;
+  --color-info: #2a5f8f;
+
+  /* Type */
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Public Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Radii -- mostly sharp, one soft stop for hero media only */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Shadow -- a single restrained elevation */
+  --shadow-card: 0 1px 2px rgba(20, 32, 26, 0.04), 0 8px 24px -12px rgba(20, 32, 26, 0.18);
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-canvas: var(--color-canvas);
+  --color-surface: var(--color-surface);
+  --color-surface-sunken: var(--color-surface-sunken);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+
+  --color-jade-950: var(--color-jade-950);
+  --color-jade-900: var(--color-jade-900);
+  --color-jade-800: var(--color-jade-800);
+  --color-jade-700: var(--color-jade-700);
+  --color-jade-600: var(--color-jade-600);
+  --color-jade-500: var(--color-jade-500);
+  --color-jade-100: var(--color-jade-100);
+  --color-jade-50: var(--color-jade-50);
+
+  --color-gold-700: var(--color-gold-700);
+  --color-gold-600: var(--color-gold-600);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-100: var(--color-gold-100);
+  --color-gold-50: var(--color-gold-50);
+
+  --color-brick-600: var(--color-brick-600);
+  --color-brick-500: var(--color-brick-500);
+  --color-brick-100: var(--color-brick-100);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-info: var(--color-info);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+
+  --shadow-card: var(--shadow-card);
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-feature-settings: "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.stone-coursing {
+  background-image: repeating-linear-gradient(
+      90deg,
+      var(--stone-color, var(--color-border-strong)) 0,
+      var(--stone-color, var(--color-border-strong)) 38px,
+      transparent 38px,
+      transparent 42px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 61px,
+      var(--stone-color, var(--color-border-strong)) 61px,
+      var(--stone-color, var(--color-border-strong)) 99px,
+      transparent 99px,
+      transparent 103px
+    );
+  background-position: 0 0, 0 8px;
+  background-size: 100% 4px;
+  background-repeat: repeat-x;
+  height: 12px;
+}
+
+@keyframes stone-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+.skeleton {
+  background-color: var(--color-surface-sunken);
+  border-radius: var(--radius-sm);
+  animation: stone-pulse 1.6s ease-in-out infinite;
+}
+
+@layer components {
+  .input {
+    @apply mt-1.5 block w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-faint;
+    @apply focus:border-jade-600 focus:outline-none focus:ring-2 focus:ring-jade-600/20;
+  }
+  .textarea {
+    @apply mt-1.5 block w-full resize-none rounded-[var(--radius-sm)] border border-border bg-surface px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-faint;
+    @apply focus:border-jade-600 focus:outline-none focus:ring-2 focus:ring-jade-600/20;
+  }
+}
