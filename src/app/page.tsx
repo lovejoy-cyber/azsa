@@ -7,6 +7,7 @@ import { ArticleCard } from "@/components/news/article-card";
 import { EventCard } from "@/components/events/event-card";
 import { PostCard } from "@/components/community/post-card";
 import { Hero } from "@/components/home/hero";
+import { HeritageSection } from "@/components/home/heritage-section";
 import { Reveal } from "@/components/home/reveal";
 import { ImmersiveMediaSection } from "@/components/home/immersive-media-section";
 import { getHomePageData } from "@/lib/db/queries";
@@ -18,6 +19,7 @@ export default async function HomePage() {
   return (
     <div>
       <Hero stats={stats} />
+      <HeritageSection />
       <GradientDivider tone="border" />
 
       <Container className="grid grid-cols-1 gap-10 py-16 lg:grid-cols-5">

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "motion/react";
 
 export function StaggerHeadline({
@@ -12,6 +13,8 @@ export function StaggerHeadline({
   delay?: number;
 }) {
   const words = text.split(" ");
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
     <span className={className}>
       {words.map((word, i) => (
@@ -24,7 +27,10 @@ export function StaggerHeadline({
               delay: delay + i * 0.06,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="inline-block"
+            onHoverStart={() => setHovered(i)}
+            onHoverEnd={() => setHovered(null)}
+            className="inline-block cursor-default transition-colors duration-200"
+            style={{ color: hovered === i ? "var(--color-gold-500)" : undefined }}
           >
             {word}
             {i < words.length - 1 ? "\u00A0" : ""}
