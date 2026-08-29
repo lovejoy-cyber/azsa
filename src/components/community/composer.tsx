@@ -19,7 +19,7 @@ export function Composer({ onPosted }: { onPosted?: () => void }) {
   if (status !== "authenticated") {
     return (
       <div className="rounded-[var(--radius-md)] border border-dashed border-border-strong bg-surface p-5 text-sm text-ink-soft">
-        <Link href="/login?callbackUrl=/community" className="font-semibold text-jade-700 hover:text-jade-800">
+        <Link href="/login?callbackUrl=/community" className="font-semibold text-gold-700 hover:text-ink-800">
           Log in
         </Link>{" "}
         to post in the community.

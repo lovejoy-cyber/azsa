@@ -47,7 +47,7 @@ export default async function DashboardPage() {
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <Card>
             <CardContent>
-              <div className="flex items-center gap-2 text-jade-700">
+              <div className="flex items-center gap-2 text-gold-700">
                 <CalendarDays className="h-4 w-4" />
                 <p className="text-sm font-semibold">Your events</p>
               </div>
@@ -55,7 +55,7 @@ export default async function DashboardPage() {
                 <ul className="mt-3 flex flex-col gap-2">
                   {myRegistrations.map((r) => (
                     <li key={r.eventSlug} className="text-sm">
-                      <Link href={`/events/${r.eventSlug}`} className="font-medium text-ink hover:text-jade-700">
+                      <Link href={`/events/${r.eventSlug}`} className="font-medium text-ink hover:text-gold-700">
                         {r.eventTitle}
                       </Link>
                       <p className="text-xs text-ink-faint">{formatDate(r.startAt)}</p>
@@ -65,7 +65,7 @@ export default async function DashboardPage() {
               ) : (
                 <p className="mt-3 text-sm text-ink-faint">
                   No events yet.{" "}
-                  <Link href="/events" className="font-medium text-jade-700 hover:text-jade-800">
+                  <Link href="/events" className="font-medium text-gold-700 hover:text-ink-800">
                     Browse events
                   </Link>
                 </p>
@@ -75,7 +75,7 @@ export default async function DashboardPage() {
 
           <Card>
             <CardContent>
-              <div className="flex items-center gap-2 text-jade-700">
+              <div className="flex items-center gap-2 text-gold-700">
                 <MessageSquare className="h-4 w-4" />
                 <p className="text-sm font-semibold">Community</p>
               </div>
@@ -84,7 +84,7 @@ export default async function DashboardPage() {
               </p>
               <Link
                 href="/community"
-                className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-jade-700 hover:text-jade-800"
+                className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-gold-700 hover:text-ink-800"
               >
                 Open feed <ArrowRight className="h-3.5 w-3.5" />
               </Link>
@@ -93,7 +93,7 @@ export default async function DashboardPage() {
 
           <Card>
             <CardContent>
-              <div className="flex items-center gap-2 text-jade-700">
+              <div className="flex items-center gap-2 text-gold-700">
                 <Bell className="h-4 w-4" />
                 <p className="text-sm font-semibold">Announcements</p>
               </div>
@@ -102,7 +102,7 @@ export default async function DashboardPage() {
               </p>
               <Link
                 href="/announcements"
-                className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-jade-700 hover:text-jade-800"
+                className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-gold-700 hover:text-ink-800"
               >
                 View announcements <ArrowRight className="h-3.5 w-3.5" />
               </Link>

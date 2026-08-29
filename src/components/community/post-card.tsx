@@ -150,7 +150,7 @@ export function PostCard({
         </button>
         <Link
           href={`/community/${id}`}
-          className="inline-flex items-center gap-1.5 rounded-[var(--radius-sm)] px-2 py-1 text-sm font-medium text-ink-soft hover:text-jade-700"
+          className="inline-flex items-center gap-1.5 rounded-[var(--radius-sm)] px-2 py-1 text-sm font-medium text-ink-soft hover:text-gold-700"
         >
           <MessageCircle className="h-4 w-4" />
           {commentCount}
@@ -168,7 +168,7 @@ export function PostCard({
       {reportOpen && (
         <div className="mt-3 rounded-[var(--radius-sm)] border border-border bg-surface-sunken p-3">
           {reportSent ? (
-            <p className="text-xs text-jade-700">
+            <p className="text-xs text-gold-700">
               Thanks — a moderator will review this. You won't see this post reported again.
             </p>
           ) : (
@@ -181,7 +181,7 @@ export function PostCard({
                 onChange={(e) => setReportReason(e.target.value)}
                 rows={2}
                 maxLength={400}
-                className="mt-1.5 block w-full resize-none rounded-[var(--radius-xs)] border border-border bg-surface px-2.5 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-jade-600 focus:outline-none"
+                className="mt-1.5 block w-full resize-none rounded-[var(--radius-xs)] border border-border bg-surface px-2.5 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-gold-600 focus:outline-none"
                 placeholder="Spam, harassment, misinformation…"
               />
               <div className="mt-2 flex items-center gap-2">

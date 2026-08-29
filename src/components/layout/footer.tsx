@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
-import { StoneDivider } from "@/components/layout/stone-divider";
+import { GradientDivider } from "@/components/layout/gradient-divider";
 
 const columns: { title: string; links: { href: string; label: string }[] }[] = [
   {
@@ -38,8 +38,8 @@ const columns: { title: string; links: { href: string; label: string }[] }[] = [
 
 export function Footer() {
   return (
-    <footer className="bg-jade-950 text-white">
-      <StoneDivider tone="gold" />
+    <footer className="bg-ink-950 text-white">
+      <GradientDivider tone="gold" />
       <Container className="grid grid-cols-2 gap-8 py-14 sm:grid-cols-4">
         <div className="col-span-2 sm:col-span-4">
           <p className="flex items-center gap-2 font-display text-2xl font-semibold">

@@ -34,7 +34,7 @@ export default async function PostDetailPage({ params }: { params: Promise<{ id:
 
   return (
     <Container className="max-w-2xl py-12">
-      <Link href="/community" className="inline-flex items-center gap-1.5 text-sm font-medium text-jade-700 hover:text-jade-800">
+      <Link href="/community" className="inline-flex items-center gap-1.5 text-sm font-medium text-gold-700 hover:text-ink-800">
         <ArrowLeft className="h-3.5 w-3.5" /> Community feed
       </Link>
 

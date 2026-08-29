@@ -19,7 +19,7 @@ export default async function CommunityPage({
 
   return (
     <div>
-      <div className="bg-jade-950 py-14 text-white">
+      <div className="bg-ink-950 py-14 text-white">
         <Container>
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-gold-500">Community</p>
           <h1 className="mt-2 max-w-2xl font-display text-3xl font-semibold sm:text-4xl">
@@ -34,7 +34,7 @@ export default async function CommunityPage({
             href="/community"
             className={cn(
               "rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium",
-              !topic ? "bg-jade-600 text-white" : "bg-surface-sunken text-ink-soft hover:text-ink"
+              !topic ? "bg-gold-500 text-ink-950" : "bg-surface-sunken text-ink-soft hover:text-ink"
             )}
           >
             All
@@ -45,7 +45,7 @@ export default async function CommunityPage({
               href={`/community?topic=${t}`}
               className={cn(
                 "rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium capitalize",
-                topic === t ? "bg-jade-600 text-white" : "bg-surface-sunken text-ink-soft hover:text-ink"
+                topic === t ? "bg-gold-500 text-ink-950" : "bg-surface-sunken text-ink-soft hover:text-ink"
               )}
             >
               {t}

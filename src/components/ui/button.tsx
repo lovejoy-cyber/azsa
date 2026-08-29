@@ -6,11 +6,11 @@ type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-jade-600 text-white hover:bg-jade-700 active:bg-jade-800 disabled:bg-jade-600/40",
+    "bg-ink-950 text-gold-500 border border-gold-500/30 hover:bg-ink-900 hover:border-gold-500/60 hover:shadow-[var(--shadow-glow-gold)] active:bg-ink-800 disabled:opacity-40 disabled:shadow-none",
   secondary:
-    "bg-gold-500 text-jade-950 hover:bg-gold-600 active:bg-gold-700 disabled:bg-gold-500/40",
+    "bg-gold-500 text-ink-950 hover:bg-gold-600 hover:shadow-[var(--shadow-glow-gold)] active:bg-gold-700 disabled:bg-gold-500/40 disabled:shadow-none",
   outline:
-    "border border-border-strong text-ink hover:border-jade-600 hover:text-jade-700 bg-transparent",
+    "border border-border-strong text-ink hover:border-gold-600 hover:text-gold-700 bg-transparent",
   ghost: "text-ink hover:bg-surface-sunken bg-transparent",
   danger: "bg-brick-600 text-white hover:bg-brick-500",
 };
@@ -34,8 +34,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled || loading}
         className={cn(
-          "inline-flex items-center justify-center rounded-[var(--radius-sm)] font-medium transition-colors duration-150",
-          "disabled:cursor-not-allowed disabled:opacity-60",
+          "inline-flex items-center justify-center rounded-[var(--radius-sm)] font-medium transition-all duration-200 ease-out",
+          "hover:-translate-y-0.5 active:translate-y-0",
+          "disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0",
           variants[variant],
           sizes[size],
           className

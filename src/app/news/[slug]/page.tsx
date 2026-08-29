@@ -14,12 +14,12 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
   return (
     <article className="py-12">
       <Container className="max-w-2xl">
-        <Link href="/news" className="inline-flex items-center gap-1.5 text-sm font-medium text-jade-700 hover:text-jade-800">
+        <Link href="/news" className="inline-flex items-center gap-1.5 text-sm font-medium text-gold-700 hover:text-ink-800">
           <ArrowLeft className="h-3.5 w-3.5" /> All news
         </Link>
 
         <div className="mt-6 flex items-center gap-3">
-          <Badge tone="jade">{article.category}</Badge>
+          <Badge tone="ink">{article.category}</Badge>
           {article.publishedAt && (
             <time className="font-mono text-xs text-ink-faint">{formatDate(article.publishedAt)}</time>
           )}

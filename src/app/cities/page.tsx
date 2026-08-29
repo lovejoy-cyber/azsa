@@ -8,7 +8,7 @@ export default async function CitiesPage() {
 
   return (
     <div>
-      <div className="bg-jade-950 py-14 text-white">
+      <div className="bg-ink-950 py-14 text-white">
         <Container>
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-gold-500">Directory</p>
           <h1 className="mt-2 max-w-2xl font-display text-3xl font-semibold sm:text-4xl">

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { StoneDivider } from "@/components/layout/stone-divider";
+import { GradientDivider } from "@/components/layout/gradient-divider";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -54,12 +54,12 @@ export default function SignupPage() {
 
   return (
     <div>
-      <div className="bg-jade-950 py-12 text-white">
+      <div className="bg-ink-950 py-12 text-white">
         <Container>
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-gold-500">Join AZSA</p>
           <h1 className="mt-2 font-display text-3xl font-semibold">Create your profile</h1>
         </Container>
-        <StoneDivider tone="gold" className="mt-8" />
+        <GradientDivider tone="gold" className="mt-8" />
       </div>
 
       <Container className="max-w-md py-12">
@@ -116,7 +116,7 @@ export default function SignupPage() {
 
         <p className="mt-6 text-center text-sm text-ink-soft">
           Already on AZSA?{" "}
-          <Link href="/login" className="font-semibold text-jade-700 hover:text-jade-800">
+          <Link href="/login" className="font-semibold text-gold-700 hover:text-ink-800">
             Log in
           </Link>
         </p>

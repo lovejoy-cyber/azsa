@@ -3,18 +3,13 @@
 /* ============================================================================
    AZSA DESIGN SYSTEM
    ----------------------------------------------------------------------------
-   Direction: an institutional platform that still feels like it belongs to
-   students, not an embassy brochure. The bookend surfaces (nav, hero, footer)
-   sit in a deep jade -- a confident, saturated green rather than an olive or
-   muddy default -- while content lives on a warm paper canvas. Gold is the
-   editorial accent (headings, dividers, key numerals); brick red is reserved
-   for genuinely urgent moments (deadlines, live badges) so it keeps meaning.
-
-   Signature element: "coursed stone" dividers/patterns -- abstracted rows of
-   stacked, unevenly-sized blocks, a nod to Great Zimbabwe's dry-stone
-   architecture (the country's own namesake, "houses of stone"). Used once,
-   deliberately, as section dividers and a hero corner treatment -- not as
-   wallpaper.
+   Direction: near-black "ink" bookend surfaces (nav / hero / footer / CTAs)
+   with gold as the one confident accent -- restrained enough to read as
+   premium rather than "AI template green + gradient". Content lives on a
+   warm paper canvas. Brick red is reserved for genuinely urgent moments
+   (deadlines, live badges) so it keeps meaning. A thin gold-colour stripe
+   at the very top of every page and the Zimbabwe flag mark by the wordmark
+   are the deliberate national touches -- kept small on purpose.
    ========================================================================= */
 
 @import "@fontsource/fraunces/400.css";
@@ -31,7 +26,7 @@
 @import "@fontsource/ibm-plex-mono/500.css";
 
 :root {
-  /* Ink / neutrals */
+  /* Ink / neutrals -- body text on the light canvas */
   --color-ink: #14201a;
   --color-ink-soft: #47554c;
   --color-ink-faint: #7c887f;
@@ -41,22 +36,32 @@
   --color-border: #ded9c8;
   --color-border-strong: #c7c0a9;
 
-  /* Jade -- primary brand */
-  --color-jade-950: #0a2a1f;
-  --color-jade-900: #0e3a2a;
-  --color-jade-800: #124e39;
-  --color-jade-700: #146144;
-  --color-jade-600: #17714f;
-  --color-jade-500: #1c8760;
-  --color-jade-100: #dcefe3;
-  --color-jade-50: #eef6f0;
+  /* Obsidian scale -- the dominant bookend surface (nav / hero / footer).
+     True near-black, editorial, not tinted green. */
+  --color-ink-950: #0b0c10;
+  --color-ink-900: #16171c;
+  --color-ink-800: #212228;
+  --color-ink-700: #333136;
+  --color-ink-100: #e7e6e4;
 
-  /* Gold -- secondary / editorial accent */
-  --color-gold-700: #966a08;
-  --color-gold-600: #b6840a;
-  --color-gold-500: #d19f16;
-  --color-gold-100: #f8ecce;
-  --color-gold-50: #fbf5e6;
+  /* Off-white / platinum -- text hierarchy on dark (obsidian) surfaces */
+  --color-offwhite: #f5f5f7;
+  --color-platinum: #a1a1aa;
+
+  /* Metallic gold -- the primary accent, used on both dark and light surfaces */
+  --color-gold-700: #8a6414;
+  --color-gold-600: #ab8320;
+  --color-gold-500: #d4af37;
+  --color-gold-100: #f6ecd2;
+  --color-gold-50: #fbf6e9;
+
+  /* Deep emerald -- a second, quieter accent. Used sparingly (badges, the
+     cultural timeline, small highlights) -- never as a dominant background,
+     which is the mistake that made an earlier version read as generic. */
+  --color-emerald-700: #0a2f1d;
+  --color-emerald-600: #124631;
+  --color-emerald-500: #1c6b49;
+  --color-emerald-100: #dcece3;
 
   /* Brick -- sparing accent, urgency only */
   --color-brick-600: #9c3a2c;
@@ -65,7 +70,7 @@
 
   /* Semantic states */
   --color-success: #1c7a4d;
-  --color-warning: #b6840a;
+  --color-warning: #ab8320;
   --color-error: #a3312a;
   --color-info: #2a5f8f;
 
@@ -79,9 +84,13 @@
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
+  --radius-xl: 24px;
 
-  /* Shadow -- a single restrained elevation */
+  /* Shadow -- a restrained elevation, plus a metallic glow for hover states
+     on dark surfaces (buttons, cards, the floating nav) */
   --shadow-card: 0 1px 2px rgba(20, 32, 26, 0.04), 0 8px 24px -12px rgba(20, 32, 26, 0.18);
+  --shadow-glow-gold: 0 0 0 1px rgba(212, 175, 55, 0.4), 0 0 28px -4px rgba(212, 175, 55, 0.45);
+  --shadow-glow-emerald: 0 0 0 1px rgba(28, 107, 73, 0.4), 0 0 28px -4px rgba(28, 107, 73, 0.4);
 }
 
 @theme inline {
@@ -94,20 +103,25 @@
   --color-border: var(--color-border);
   --color-border-strong: var(--color-border-strong);
 
-  --color-jade-950: var(--color-jade-950);
-  --color-jade-900: var(--color-jade-900);
-  --color-jade-800: var(--color-jade-800);
-  --color-jade-700: var(--color-jade-700);
-  --color-jade-600: var(--color-jade-600);
-  --color-jade-500: var(--color-jade-500);
-  --color-jade-100: var(--color-jade-100);
-  --color-jade-50: var(--color-jade-50);
+  --color-ink-950: var(--color-ink-950);
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-800: var(--color-ink-800);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-100: var(--color-ink-100);
+
+  --color-offwhite: var(--color-offwhite);
+  --color-platinum: var(--color-platinum);
 
   --color-gold-700: var(--color-gold-700);
   --color-gold-600: var(--color-gold-600);
   --color-gold-500: var(--color-gold-500);
   --color-gold-100: var(--color-gold-100);
   --color-gold-50: var(--color-gold-50);
+
+  --color-emerald-700: var(--color-emerald-700);
+  --color-emerald-600: var(--color-emerald-600);
+  --color-emerald-500: var(--color-emerald-500);
+  --color-emerald-100: var(--color-emerald-100);
 
   --color-brick-600: var(--color-brick-600);
   --color-brick-500: var(--color-brick-500);
@@ -126,8 +140,11 @@
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
 
   --shadow-card: var(--shadow-card);
+  --shadow-glow-gold: var(--shadow-glow-gold);
+  --shadow-glow-emerald: var(--shadow-glow-emerald);
 }
 
 * {
@@ -166,27 +183,18 @@ h1, h2, h3, h4, .font-display {
   }
 }
 
-.stone-coursing {
-  background-image: repeating-linear-gradient(
-      90deg,
-      var(--stone-color, var(--color-border-strong)) 0,
-      var(--stone-color, var(--color-border-strong)) 38px,
-      transparent 38px,
-      transparent 42px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 61px,
-      var(--stone-color, var(--color-border-strong)) 61px,
-      var(--stone-color, var(--color-border-strong)) 99px,
-      transparent 99px,
-      transparent 103px
-    );
-  background-position: 0 0, 0 8px;
-  background-size: 100% 4px;
-  background-repeat: repeat-x;
-  height: 12px;
+/* A clean gradient hairline used as a section divider -- replaces an
+   earlier "coursed stone" pattern that rendered as a messy, glitchy strip
+   in testing. Simple reads as premium; busy did not. */
+.gradient-hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--hairline-color, var(--color-gold-500)) 50%,
+    transparent 100%
+  );
+  opacity: 0.6;
 }
 
 @keyframes stone-pulse {
@@ -199,13 +207,68 @@ h1, h2, h3, h4, .font-display {
   animation: stone-pulse 1.6s ease-in-out infinite;
 }
 
+@keyframes glow-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-3%, 2%) scale(1.05); }
+}
+.ambient-glow {
+  animation: glow-drift 14s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow { animation: none; }
+}
+
+/* Glassmorphism -- the floating nav shell */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(20, 21, 26, 0.82), rgba(11, 12, 16, 0.88));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+/* Metallic glow on hover -- used instead of a plain border-color change
+   where a component should feel like it's lit from within */
+.glow-on-hover {
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.glow-on-hover:hover {
+  box-shadow: var(--shadow-glow-gold);
+  transform: translateY(-3px);
+}
+.glow-on-hover--emerald:hover {
+  box-shadow: var(--shadow-glow-emerald);
+}
+
+/* Cursor-following sheen -- subtle diagonal light sweep on hover, driven by
+   a --mx/--my custom property set from JS pointer coordinates */
+.sheen {
+  position: relative;
+  overflow: hidden;
+}
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(212, 175, 55, 0.14),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.sheen:hover::after {
+  opacity: 1;
+}
+
 @layer components {
   .input {
     @apply mt-1.5 block w-full rounded-[var(--radius-sm)] border border-border bg-surface px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-faint;
-    @apply focus:border-jade-600 focus:outline-none focus:ring-2 focus:ring-jade-600/20;
+    @apply focus:border-gold-600 focus:outline-none focus:ring-2 focus:ring-gold-600/20;
   }
   .textarea {
     @apply mt-1.5 block w-full resize-none rounded-[var(--radius-sm)] border border-border bg-surface px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-faint;
-    @apply focus:border-jade-600 focus:outline-none focus:ring-2 focus:ring-jade-600/20;
+    @apply focus:border-gold-600 focus:outline-none focus:ring-2 focus:ring-gold-600/20;
   }
 }

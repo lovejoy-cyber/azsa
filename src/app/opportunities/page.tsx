@@ -7,7 +7,7 @@ export const metadata = { title: "Opportunities" };
 
 const TYPE_TONE = {
   scholarship: "gold",
-  internship: "jade",
+  internship: "ink",
   job: "info",
   volunteer: "neutral",
   grant: "gold",
@@ -18,7 +18,7 @@ export default async function OpportunitiesPage() {
 
   return (
     <div>
-      <div className="bg-jade-950 py-14 text-white">
+      <div className="bg-ink-950 py-14 text-white">
         <Container>
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-gold-500">Opportunities</p>
           <h1 className="mt-2 max-w-2xl font-display text-3xl font-semibold sm:text-4xl">
@@ -33,7 +33,7 @@ export default async function OpportunitiesPage() {
             {opportunities.map((o) => (
               <div key={o.id} className="rounded-[var(--radius-md)] border border-border bg-surface p-5">
                 <div className="flex items-center justify-between gap-3">
-                  <Badge tone={(TYPE_TONE as Record<string, "jade" | "gold" | "brick" | "neutral" | "info">)[o.type] ?? "neutral"}>
+                  <Badge tone={(TYPE_TONE as Record<string, "ink" | "gold" | "brick" | "neutral" | "info">)[o.type] ?? "neutral"}>
                     {o.type}
                   </Badge>
                   {o.deadline && (
@@ -43,7 +43,7 @@ export default async function OpportunitiesPage() {
                 <h3 className="mt-2.5 font-display text-lg font-semibold text-ink">{o.title}</h3>
                 <p className="mt-1.5 text-sm text-ink-soft">{o.description}</p>
                 {o.link && (
-                  <a href={o.link} className="mt-2 inline-block text-sm font-semibold text-jade-700 hover:text-jade-800">
+                  <a href={o.link} className="mt-2 inline-block text-sm font-semibold text-gold-700 hover:text-ink-800">
                     Learn more
                   </a>
                 )}

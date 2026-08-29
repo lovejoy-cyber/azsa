@@ -17,7 +17,7 @@ export function PanelShell({
   return (
     <div className="bg-surface-sunken/40 py-10">
       <Container>
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-jade-600">{eyebrow}</p>
+        <p className="font-mono text-xs uppercase tracking-[0.15em] text-gold-600">{eyebrow}</p>
         <h1 className="mt-1 font-display text-2xl font-semibold text-ink sm:text-3xl">{title}</h1>
 
         <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[200px_1fr]">
@@ -30,7 +30,7 @@ export function PanelShell({
                   href={item.href}
                   className={
                     active
-                      ? "shrink-0 rounded-[var(--radius-sm)] bg-jade-600 px-3 py-2 text-sm font-semibold text-white"
+                      ? "shrink-0 rounded-[var(--radius-sm)] bg-gold-500 px-3 py-2 text-sm font-semibold text-ink-950"
                       : "shrink-0 rounded-[var(--radius-sm)] px-3 py-2 text-sm font-medium text-ink-soft hover:bg-surface-sunken"
                   }
                 >

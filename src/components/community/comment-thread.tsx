@@ -88,7 +88,7 @@ export function CommentThread({ postId, initialComments }: { postId: string; ini
         </form>
       ) : (
         <p className="mt-5 text-sm text-ink-soft">
-          <Link href="/login" className="font-semibold text-jade-700 hover:text-jade-800">
+          <Link href="/login" className="font-semibold text-gold-700 hover:text-ink-800">
             Log in
           </Link>{" "}
           to join the conversation.

@@ -42,7 +42,7 @@ export default async function EmbassyResourcesPage() {
         <div className="flex flex-col gap-3">
           {resources.map((r) => (
             <div key={r.id} className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
-              <Badge tone="jade">{r.category}</Badge>
+              <Badge tone="ink">{r.category}</Badge>
               <p className="mt-2 font-semibold text-ink">{r.title}</p>
               <p className="mt-1 line-clamp-2 text-sm text-ink-soft">{r.description}</p>
             </div>

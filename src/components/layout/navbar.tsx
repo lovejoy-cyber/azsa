@@ -9,6 +9,7 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
 import { NotificationBell } from "@/components/layout/notification-bell";
+import { KuduMark } from "@/components/layout/kudu-mark";
 import { cn } from "@/lib/utils";
 
 const primaryLinks = [
@@ -33,10 +34,11 @@ export function Navbar() {
   const { data: session, status } = useSession();
 
   return (
-    <header className="sticky top-0 z-50 bg-jade-950 text-white">
-      <Container className="flex h-16 items-center justify-between">
+    <header className="sticky top-3 z-50 px-3 sm:px-5">
+      <div className="glass-panel mx-auto max-w-6xl rounded-[var(--radius-xl)] text-white shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)]">
+        <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <MarkGlyph />
+          <KuduMark />
           <span className="font-display text-lg font-semibold tracking-tight">AZSA</span>
           <span aria-hidden className="text-base leading-none">🇿🇼</span>
         </Link>
@@ -57,7 +59,7 @@ export function Navbar() {
               More <ChevronDown className="h-3.5 w-3.5" />
             </button>
             {moreOpen && (
-              <div className="absolute right-0 top-full mt-1 w-56 rounded-[var(--radius-md)] border border-white/10 bg-jade-900 p-1.5 shadow-[var(--shadow-card)]">
+              <div className="absolute right-0 top-full mt-1 w-56 rounded-[var(--radius-md)] border border-white/10 bg-ink-900 p-1.5 shadow-[var(--shadow-card)]">
                 {moreLinks.map((l) => (
                   <Link
                     key={l.href}
@@ -114,7 +116,7 @@ export function Navbar() {
       </Container>
 
       {open && (
-        <div className="border-t border-white/10 bg-jade-950 lg:hidden">
+        <div className="border-t border-gold-500/10 lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {[...primaryLinks, ...moreLinks, { href: "/about", label: "About" }, { href: "/contact", label: "Contact" }].map(
               (l) => (
@@ -163,6 +165,7 @@ export function Navbar() {
           </Container>
         </div>
       )}
+      </div>
     </header>
   );
 }
@@ -194,7 +197,7 @@ function UserMenu({ name, role }: { name: string; role: string }) {
         <ChevronDown className="h-3.5 w-3.5 text-white/70" />
       </button>
       {open && (
-        <div className="absolute right-0 top-full mt-1 w-52 rounded-[var(--radius-md)] border border-white/10 bg-jade-900 p-1.5 shadow-[var(--shadow-card)]">
+        <div className="absolute right-0 top-full mt-1 w-52 rounded-[var(--radius-md)] border border-white/10 bg-ink-900 p-1.5 shadow-[var(--shadow-card)]">
           <Link href="/dashboard" className="flex items-center gap-2 rounded-[var(--radius-sm)] px-3 py-2 text-sm text-white/90 hover:bg-white/10">
             <LayoutDashboard className="h-4 w-4" /> Dashboard
           </Link>
@@ -220,12 +223,4 @@ function UserMenu({ name, role }: { name: string; role: string }) {
   );
 }
 
-function MarkGlyph() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden>
-      <rect x="1" y="17" width="7" height="8" rx="1" fill="var(--color-gold-500)" />
-      <rect x="9.5" y="12" width="7" height="13" rx="1" fill="var(--color-gold-500)" />
-      <rect x="18" y="6" width="7" height="19" rx="1" fill="var(--color-gold-500)" />
-    </svg>
-  );
-}
+

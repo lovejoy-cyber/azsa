@@ -53,7 +53,7 @@ export default async function AdminUsersPage() {
                   <span
                     className={
                       u.status === "active"
-                        ? "text-xs font-medium text-jade-700"
+                        ? "text-xs font-medium text-gold-700"
                         : "text-xs font-medium text-brick-600"
                     }
                   >

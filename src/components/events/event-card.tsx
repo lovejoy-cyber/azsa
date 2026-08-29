@@ -26,13 +26,13 @@ export function EventCard({
       href={`/events/${slug}`}
       className="group flex gap-4 rounded-[var(--radius-md)] border border-border bg-surface p-5 transition-colors hover:border-gold-500/50"
     >
-      <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-[var(--radius-sm)] bg-jade-50 font-mono">
-        <span className="text-lg font-bold leading-none text-jade-800">{day}</span>
-        <span className="mt-0.5 text-[10px] font-semibold tracking-wide text-jade-600">{month}</span>
+      <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-[var(--radius-sm)] bg-gold-50 font-mono">
+        <span className="text-lg font-bold leading-none text-ink-800">{day}</span>
+        <span className="mt-0.5 text-[10px] font-semibold tracking-wide text-gold-600">{month}</span>
       </div>
       <div className="min-w-0">
         <Badge tone="gold" className="mb-1.5">{category}</Badge>
-        <h3 className="truncate font-display text-base font-semibold text-ink group-hover:text-jade-700">
+        <h3 className="truncate font-display text-base font-semibold text-ink group-hover:text-gold-700">
           {title}
         </h3>
         <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-soft">

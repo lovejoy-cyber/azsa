@@ -33,7 +33,7 @@ export function StatusToggle({ userId, status }: { userId: string; status: "acti
       onClick={() => startTransition(() => setUserStatus(userId, suspended ? "active" : "suspended"))}
       className={
         suspended
-          ? "rounded-[var(--radius-sm)] bg-jade-100 px-2.5 py-1 text-xs font-semibold text-jade-800"
+          ? "rounded-[var(--radius-sm)] bg-gold-100 px-2.5 py-1 text-xs font-semibold text-ink-800"
           : "rounded-[var(--radius-sm)] bg-brick-100 px-2.5 py-1 text-xs font-semibold text-brick-600"
       }
     >

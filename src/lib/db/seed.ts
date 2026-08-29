@@ -12,6 +12,20 @@ import { slugify } from "@/lib/utils";
 
 async function main() {
   console.log("Seeding AZSA demo data...");
+  console.log("Clearing existing data (this script always starts from empty)...");
+
+  // TRUNCATE ... CASCADE handles foreign-key order for us and resets
+  // identity/defaults, so re-running this script is always safe.
+  await db.execute(sql`
+    TRUNCATE TABLE
+      notifications, audit_logs, reports, media,
+      event_registrations, events,
+      likes, comments, posts, topic_follows,
+      opportunities, announcements, resources, stories, news_articles,
+      profiles, users,
+      universities, cities
+    RESTART IDENTITY CASCADE
+  `);
 
   const passwordHash = await bcrypt.hash("Password123!", 10);
 

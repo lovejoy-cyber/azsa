@@ -1,10 +1,10 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-type Tone = "jade" | "gold" | "brick" | "neutral" | "info";
+type Tone = "ink" | "gold" | "brick" | "neutral" | "info";
 
 const tones: Record<Tone, string> = {
-  jade: "bg-jade-100 text-jade-800",
+  ink: "bg-ink-100 text-ink-900",
   gold: "bg-gold-100 text-gold-700",
   brick: "bg-brick-100 text-brick-600",
   neutral: "bg-surface-sunken text-ink-soft",

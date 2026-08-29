@@ -36,12 +36,15 @@ test plan (already run once against this build).
 - **Admin tools**: user list with role changes and suspend/reactivate, a
   moderation queue that resolves real reports, news publishing, and platform
   stats pulled live from the database.
-- **Design system**: a deliberate jade/gold/brick palette, a "coursed stone"
-  signature motif (a nod to Great Zimbabwe's dry-stone architecture), and a
-  few explicit Zimbabwean touches requested along the way -- a flag-colour
-  accent stripe at the top of every page, the Zimbabwe flag emoji next to the
-  AZSA wordmark, and the national motto ("Unity, Freedom, Work") given its
-  own section on the About page.
+- **Design system**: a near-black ("ink") + gold palette with brick red for
+  rare urgency-only accents, real scroll/hover motion (via the `motion`
+  library), and a few explicit Zimbabwean touches -- a flag-colour accent
+  stripe at the top of every page, the Zimbabwe flag emoji next to the AZSA
+  wordmark, an abstract wing-shaped logo mark, and the national motto
+  ("Unity, Freedom, Work") on the About page. An earlier green-dominant
+  palette and a decorative "stone" pattern were both replaced after user
+  testing showed the pattern rendering as visibly broken and the green
+  reading as generic -- see git history if you want to see what changed.
 
 ## What's an intentional gap, not a hidden one
 
@@ -49,6 +52,15 @@ These are left unbuilt on purpose -- either because they need external
 services and credentials only you can provide, or because you specifically
 said you'd rather add them yourself:
 
+- **Hero/section background video**. The homepage's "Life across Algeria"
+  section (`src/components/home/immersive-media-section.tsx`) is fully built
+  to hold a real video -- gradient scrim, text legibility, fallback all
+  done -- but has no video wired in. Stock sites like Pexels/Unsplash don't
+  give permanent hotlink URLs, so I didn't link one in; it would break or
+  violate their terms. To add real footage: drop a licensed `.mp4` into
+  `public/video/`, then pass `src="/video/yourfile.mp4"` (and optionally
+  `poster="/video/yourposter.jpg"`) to `<ImmersiveMediaSection>` in
+  `src/app/page.tsx`. Everything else already works.
 - **Image uploads**. Posts and profiles have `images` / `avatarUrl` fields
   ready in the schema, but there's no file-storage integration (S3 /
   Cloudinary / Vercel Blob). Wire one in and point the existing UI at it.

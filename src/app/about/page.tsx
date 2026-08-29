@@ -1,12 +1,13 @@
 import { Container } from "@/components/ui/container";
-import { StoneDivider } from "@/components/layout/stone-divider";
+import { GradientDivider } from "@/components/layout/gradient-divider";
+import { CulturalTimeline } from "@/components/home/cultural-timeline";
 
 export const metadata = { title: "About" };
 
 export default function AboutPage() {
   return (
     <div>
-      <div className="bg-jade-950 py-16 text-white">
+      <div className="bg-ink-950 py-16 text-white">
         <Container className="max-w-2xl">
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-gold-500">About AZSA 🇿🇼</p>
           <h1 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
@@ -18,7 +19,7 @@ export default function AboutPage() {
             straight answer about a visa question, and hear from the embassy directly.
           </p>
         </Container>
-        <StoneDivider tone="gold" className="mt-10" />
+        <GradientDivider tone="gold" className="mt-10" />
       </div>
 
       <Container className="max-w-2xl py-14">
@@ -44,25 +45,45 @@ export default function AboutPage() {
             <li>Opportunities worth applying for -- scholarships, internships, grants</li>
           </ul>
         </section>
+      </Container>
 
-        <section className="mt-10 rounded-[var(--radius-md)] border border-border bg-jade-50 p-6">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] text-jade-600">
+      <div className="bg-ink-900 py-14 text-white">
+        <Container className="max-w-2xl text-center">
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-platinum">
             Zimbabwe's national motto
           </p>
-          <p className="mt-2 font-display text-2xl font-semibold text-jade-900">
-            Unity · Freedom · Work
+          <p className="mt-3 font-display text-4xl italic font-semibold text-gold-500 sm:text-5xl">
+            Unity &middot; Freedom &middot; Work
           </p>
-          <p className="mt-3 leading-relaxed text-ink-soft">
+          <p className="mx-auto mt-5 max-w-xl leading-relaxed text-white/65">
             The motto on Zimbabwe's coat of arms reads plainly on the wall of any government
-            building back home — but it maps onto student life here just as directly. Unity
+            building back home -- but it maps onto student life here just as directly. Unity
             is the community this platform exists to hold together. Freedom is the choice
             every student made to study somewhere unfamiliar. Work is what they're actually
-            here to do. AZSA borrows the motto because it fits, not just because it's ours.
+            here to do.
           </p>
-        </section>
+        </Container>
+      </div>
 
-        <section className="mt-10">
-          <h2 className="font-display text-xl font-semibold text-ink">A note on this build</h2>
+      <Container className="max-w-2xl py-16">
+        <div className="text-center">
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-gold-600">Our story</p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink sm:text-3xl">
+            How AZSA came together
+          </h2>
+          <p className="mx-auto mt-2 max-w-md text-sm text-ink-faint">
+            An illustrative founding story for this build -- swap in AZSA's real timeline
+            when you have it.
+          </p>
+        </div>
+        <div className="mt-12">
+          <CulturalTimeline />
+        </div>
+      </Container>
+
+      <Container className="max-w-2xl pb-16">
+        <section className="rounded-[var(--radius-md)] border border-dashed border-border-strong p-6">
+          <h2 className="font-display text-lg font-semibold text-ink">A note on this build</h2>
           <p className="mt-3 leading-relaxed text-ink-soft">
             This version of AZSA runs on real, working infrastructure -- a Postgres database,
             authenticated accounts, and server-enforced permissions -- populated with clearly

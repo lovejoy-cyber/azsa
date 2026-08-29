@@ -49,7 +49,7 @@ export default async function AdminNewsPage() {
           {articles.map((a) => (
             <div key={a.id} className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
               <div className="flex items-center gap-2">
-                <Badge tone={a.status === "published" ? "jade" : "neutral"}>{a.status}</Badge>
+                <Badge tone={a.status === "published" ? "ink" : "neutral"}>{a.status}</Badge>
                 {a.featured && <Badge tone="gold">Featured</Badge>}
               </div>
               <p className="mt-2 font-semibold text-ink">{a.title}</p>

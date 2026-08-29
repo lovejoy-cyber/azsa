@@ -17,7 +17,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
   return (
     <div className="py-12">
       <Container className="max-w-2xl">
-        <Link href="/events" className="inline-flex items-center gap-1.5 text-sm font-medium text-jade-700 hover:text-jade-800">
+        <Link href="/events" className="inline-flex items-center gap-1.5 text-sm font-medium text-gold-700 hover:text-ink-800">
           <ArrowLeft className="h-3.5 w-3.5" /> All events
         </Link>
 
@@ -28,20 +28,20 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
 
         <div className="mt-5 flex flex-col gap-2 text-sm text-ink-soft">
           <span className="inline-flex items-center gap-2">
-            <CalendarDays className="h-4 w-4 text-jade-600" />
+            <CalendarDays className="h-4 w-4 text-gold-600" />
             {formatDate(start, { weekday: "long", day: "numeric", month: "long", year: "numeric" })} ·{" "}
             {start.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
           </span>
           {(event.location || event.cityName) && (
             <span className="inline-flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-jade-600" />
+              <MapPin className="h-4 w-4 text-gold-600" />
               {event.location}
               {event.location && event.cityName ? `, ${event.cityName}` : event.cityName}
             </span>
           )}
           {event.organizerName && (
             <span className="inline-flex items-center gap-2">
-              <User className="h-4 w-4 text-jade-600" />
+              <User className="h-4 w-4 text-gold-600" />
               Organised by {event.organizerName}
             </span>
           )}

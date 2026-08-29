@@ -6,7 +6,7 @@ export const metadata = { title: "Contact" };
 export default function ContactPage() {
   return (
     <div>
-      <div className="bg-jade-950 py-14 text-white">
+      <div className="bg-ink-950 py-14 text-white">
         <Container>
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-gold-500">Contact</p>
           <h1 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">Get in touch</h1>
@@ -15,7 +15,7 @@ export default function ContactPage() {
       <Container className="max-w-xl py-14">
         <div className="flex flex-col gap-4">
           <div className="flex items-start gap-3 rounded-[var(--radius-md)] border border-border bg-surface p-5">
-            <Mail className="mt-0.5 h-5 w-5 text-jade-600" />
+            <Mail className="mt-0.5 h-5 w-5 text-gold-600" />
             <div>
               <p className="font-semibold text-ink">Embassy student affairs</p>
               <p className="text-sm text-ink-soft">
@@ -26,7 +26,7 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="flex items-start gap-3 rounded-[var(--radius-md)] border border-border bg-surface p-5">
-            <MessageSquareText className="mt-0.5 h-5 w-5 text-jade-600" />
+            <MessageSquareText className="mt-0.5 h-5 w-5 text-gold-600" />
             <div>
               <p className="font-semibold text-ink">Platform feedback</p>
               <p className="text-sm text-ink-soft">
