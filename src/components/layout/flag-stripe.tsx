@@ -1,19 +1,15 @@
 /**
- * A restrained accent stripe in Zimbabwe's national colours -- green, gold,
- * red, black -- used once or twice as a divider, not as wallpaper. This is a
- * colour echo, not a literal flag reproduction (no triangle/star/bird
- * detailing), so it reads as a deliberate design accent rather than clip art.
+ * The national colour band across the top of every page. Deliberately
+ * substantial (10px, with a specular sheen) rather than a hairline -- a
+ * 3px strip read as an accident rather than an intentional statement of
+ * identity.
  */
 export function FlagStripe({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex h-[3px] w-full ${className}`} role="presentation" aria-hidden="true">
-      <span className="flex-1" style={{ background: "#0f6e4c" }} />
-      <span className="flex-1" style={{ background: "#d19f16" }} />
-      <span className="flex-1" style={{ background: "#b3282e" }} />
-      <span className="flex-1" style={{ background: "#111111" }} />
-      <span className="flex-1" style={{ background: "#b3282e" }} />
-      <span className="flex-1" style={{ background: "#d19f16" }} />
-      <span className="flex-1" style={{ background: "#0f6e4c" }} />
-    </div>
+    <div
+      className={`flag-stripe-bold w-full ${className}`}
+      role="presentation"
+      aria-hidden="true"
+    />
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import Image from "next/image";
+import { Reveal } from "@/components/home/reveal";
 
 /**
  * A full-bleed cinematic section built to hold a background video.
@@ -16,12 +17,14 @@ import { motion } from "motion/react";
 export function ImmersiveMediaSection({
   src,
   poster,
+  image,
   eyebrow,
   title,
   body,
 }: {
   src?: string;
   poster?: string;
+  image?: string;
   eyebrow: string;
   title: string;
   body: string;
@@ -42,6 +45,14 @@ export function ImmersiveMediaSection({
         >
           <source src={src} type="video/mp4" />
         </video>
+      ) : image ? (
+        <Image
+          src={image}
+          alt=""
+          fill
+          sizes="100vw"
+          className="ken-burns object-cover"
+        />
       ) : (
         <PlaceholderScene />
       )}
@@ -52,33 +63,18 @@ export function ImmersiveMediaSection({
 
       <div className="relative flex h-full items-end">
         <div className="max-w-2xl px-5 pb-16 sm:px-8 lg:pb-20">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="font-mono text-xs uppercase tracking-[0.2em] text-gold-500"
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-gold-500"
           >
             {eyebrow}
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-            className="mt-3 font-display text-3xl font-semibold text-offwhite sm:text-4xl"
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-semibold text-offwhite sm:text-4xl"
           >
             {title}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.16 }}
-            className="mt-3 text-[15px] leading-relaxed text-platinum"
+          </h2>
+          <p className="mt-3 text-[15px] leading-relaxed text-platinum"
           >
             {body}
-          </motion.p>
+          </p>
         </div>
       </div>
     </section>

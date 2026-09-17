@@ -4,6 +4,7 @@ import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { QuickFill } from "@/components/auth/quick-fill";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { GradientDivider } from "@/components/layout/gradient-divider";
@@ -71,13 +72,7 @@ function LoginForm() {
         </Button>
       </form>
 
-      <div className="mt-6 rounded-[var(--radius-md)] border border-dashed border-border-strong p-4 text-xs text-ink-faint">
-        <p className="font-semibold text-ink-soft">Demo accounts</p>
-        <p className="mt-1">student: tanaka.moyo@azsa.dz</p>
-        <p>embassy: embassy@azsa.dz</p>
-        <p>super admin: admin@azsa.dz</p>
-        <p className="mt-1">password for all: Password123!</p>
-      </div>
+      {process.env.NODE_ENV !== "production" && <QuickFill />}
 
       <p className="mt-6 text-center text-sm text-ink-soft">
         New to AZSA?{" "}

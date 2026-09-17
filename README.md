@@ -138,3 +138,33 @@ src/
     validations.ts Zod schemas for every mutating input
   proxy.ts        Route-level auth/role redirects (Next.js 16 convention)
 ```
+
+## Production checklist
+
+Before deploying to a public URL:
+
+1. **Set `SEED_PASSWORD`** in your deployment environment before running
+   `npm run db:seed`. Without it the seed falls back to a documented
+   development password and prints a warning.
+2. **Do not set** `NEXT_PUBLIC_SHOW_TEST_LOGINS` or
+   `NEXT_PUBLIC_SEED_PASSWORD` in production. These only exist so the
+   tap-to-fill helper appears on `/login` during local development; the
+   component returns `null` unless `NEXT_PUBLIC_SHOW_TEST_LOGINS=true`.
+3. **Set `AUTH_SECRET`** (`npx auth secret`) and `NEXTAUTH_URL` to the
+   deployed origin, then redeploy.
+4. **Background videos** (optional): drop `zimbabwe.mp4` and `algeria.mp4`
+   into `public/video/`. They autoplay muted and loop in the heritage
+   section; until present, an animated light field shows instead.
+
+## Motion architecture
+
+- `motion` (Framer Motion's successor) for component orchestration.
+- `lenis` for momentum smooth scrolling — disabled under
+  `prefers-reduced-motion` and on coarse pointers, where native inertia is
+  better than anything we'd override it with.
+- `src/components/motion/magnetic.tsx` — cursor-attracted buttons.
+- `src/components/motion/parallax.tsx` — scroll-linked depth.
+- `src/components/ui/tilt-card.tsx` — CSS 3D perspective tilt.
+- Scroll reveals are **CSS-first**: content is visible by default and the
+  animation is opt-in via a class JS adds on mount, so a failed hydration
+  can never leave a section permanently invisible.

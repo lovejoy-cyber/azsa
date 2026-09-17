@@ -27,7 +27,15 @@ async function main() {
     RESTART IDENTITY CASCADE
   `);
 
-  const passwordHash = await bcrypt.hash("Password123!", 10);
+  // Seed password comes from the environment. There is no production
+// fallback on purpose -- shipping a known password would be a real
+// vulnerability, so the seed refuses to run without one.
+const seedPassword = process.env.SEED_PASSWORD ?? (
+  process.env.NODE_ENV === "production"
+    ? (() => { throw new Error("SEED_PASSWORD must be set to seed a production database."); })()
+    : "Password123!"
+);
+const passwordHash = await bcrypt.hash(seedPassword, 10);
 
   // ---- Cities ----------------------------------------------------------
   const [oran, algiers, constantine, annaba] = await db
@@ -57,6 +65,81 @@ async function main() {
         wilaya: "Annaba Wilaya",
         description: "A coastal city with a growing group of postgraduate engineering students.",
         studentPopulationEstimate: 22,
+      },
+      {
+        name: "Blida",
+        wilaya: "Blida Wilaya",
+        description:
+          "Just south of Algiers at the foot of the Atlas, with a large medical faculty.",
+        studentPopulationEstimate: 18,
+      },
+      {
+        name: "Tlemcen",
+        wilaya: "Tlemcen Wilaya",
+        description:
+          "A historic city near the Moroccan border, known for its architecture and its university.",
+        studentPopulationEstimate: 14,
+      },
+      {
+        name: "Sétif",
+        wilaya: "Sétif Wilaya",
+        description:
+          "A high-plateau city with one of the country's largest student populations.",
+        studentPopulationEstimate: 16,
+      },
+      {
+        name: "Béjaïa",
+        wilaya: "Béjaïa Wilaya",
+        description: "A Mediterranean port city with a well-regarded technology faculty.",
+        studentPopulationEstimate: 11,
+      },
+      {
+        name: "Batna",
+        wilaya: "Batna Wilaya",
+        description: "Gateway to the Aurès mountains, with strong engineering programmes.",
+        studentPopulationEstimate: 9,
+      },
+      {
+        name: "Tizi Ouzou",
+        wilaya: "Tizi Ouzou Wilaya",
+        description: "In the heart of Kabylie, host to a large multidisciplinary university.",
+        studentPopulationEstimate: 8,
+      },
+      {
+        name: "Sidi Bel Abbès",
+        wilaya: "Sidi Bel Abbès Wilaya",
+        description: "An inland city with a growing electronics and computing faculty.",
+        studentPopulationEstimate: 10,
+      },
+      {
+        name: "Mostaganem",
+        wilaya: "Mostaganem Wilaya",
+        description: "A coastal city west of Oran with agronomy and sciences faculties.",
+        studentPopulationEstimate: 7,
+      },
+      {
+        name: "Biskra",
+        wilaya: "Biskra Wilaya",
+        description: "On the edge of the Sahara, with architecture and civil engineering schools.",
+        studentPopulationEstimate: 6,
+      },
+      {
+        name: "Ouargla",
+        wilaya: "Ouargla Wilaya",
+        description: "A southern hub for petroleum and energy engineering studies.",
+        studentPopulationEstimate: 5,
+      },
+      {
+        name: "Boumerdès",
+        wilaya: "Boumerdès Wilaya",
+        description: "Coastal, just east of Algiers, known for hydrocarbons and engineering.",
+        studentPopulationEstimate: 12,
+      },
+      {
+        name: "Tiaret",
+        wilaya: "Tiaret Wilaya",
+        description: "A high-plateau city with veterinary and agricultural sciences.",
+        studentPopulationEstimate: 4,
       },
     ])
     .returning();
@@ -444,7 +527,8 @@ async function main() {
   }
 
   console.log("Seed complete.");
-  console.log("Demo login: admin@azsa.dz / embassy@azsa.dz / tanaka.moyo@azsa.dz — password: Password123!");
+  console.log("Seeded accounts: admin@azsa.dz / embassy@azsa.dz / farai.ndlovu@azsa.dz / tanaka.moyo@azsa.dz");
+  console.log("Password: value of SEED_PASSWORD (defaults to the local development password outside production).");
   process.exit(0);
 }
 

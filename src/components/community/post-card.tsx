@@ -3,9 +3,10 @@
 import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { Heart, MessageCircle, Flag } from "lucide-react";
+import { Heart, MessageCircle, Flag, Share2 } from "lucide-react";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 function timeAgo(date: Date | string) {
@@ -56,7 +57,8 @@ export function PostCard({
   const [reportSent, setReportSent] = useState(false);
   const [reportError, setReportError] = useState<string | null>(null);
 
-  async function toggleLike() {
+  async function toggleLike(e: React.MouseEvent) {
+    e.stopPropagation();
     if (status !== "authenticated") {
       setError("Log in to like posts.");
       return;
@@ -73,7 +75,6 @@ export function PostCard({
         });
         if (!res.ok) throw new Error();
       } catch {
-        // revert on failure
         setLiked(!nextLiked);
         setCount((c) => c + (nextLiked ? -1 : 1));
         setError("Couldn't update your like — try again.");
@@ -111,23 +112,31 @@ export function PostCard({
 
   const Body = (
     <>
-      <div className="flex items-start gap-3">
-        <Avatar name={authorName} size={38} />
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <p className="truncate text-sm font-semibold text-ink">{authorName}</p>
-            {authorField && <span className="truncate text-xs text-ink-faint">· {authorField}</span>}
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <Avatar name={authorName} size={42} />
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <p className="truncate text-sm font-bold text-white transition-colors group-hover:text-gold-400">
+                {authorName}
+              </p>
+              {authorField && <span className="truncate text-xs font-mono text-white/50">· {authorField}</span>}
+            </div>
+            <p className="text-[11px] font-mono text-white/40">{timeAgo(createdAt)}</p>
           </div>
-          <p className="text-xs text-ink-faint">{timeAgo(createdAt)}</p>
         </div>
-        <Badge tone="neutral">{topic}</Badge>
+        <Badge tone="gold-glow">{topic}</Badge>
       </div>
-      <p className="mt-3 whitespace-pre-line text-[15px] leading-relaxed text-ink">{content}</p>
+      <p className="mt-4 whitespace-pre-line text-[15px] leading-relaxed text-white/80">{content}</p>
     </>
   );
 
   return (
-    <div className="rounded-[var(--radius-md)] border border-border bg-surface p-5">
+    <motion.div
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.2 }}
+      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-6 backdrop-blur-xl shadow-xl hover:border-gold-500/30 hover:shadow-[0_20px_45px_-10px_rgba(0,0,0,0.8),0_0_20px_rgba(255,215,0,0.1)] transition-all duration-300"
+    >
       {linkToDetail ? (
         <Link href={`/community/${id}`} className="block">
           {Body}
@@ -136,44 +145,51 @@ export function PostCard({
         Body
       )}
 
-      <div className="mt-4 flex items-center gap-4 border-t border-border pt-3">
-        <button
+      {/* Action Toolbar */}
+      <div className="mt-5 flex items-center gap-4 border-t border-white/10 pt-4 text-xs font-mono">
+        <motion.button
+          whileTap={{ scale: 0.85 }}
           onClick={toggleLike}
           disabled={isPending}
           className={cn(
-            "inline-flex items-center gap-1.5 rounded-[var(--radius-sm)] px-2 py-1 text-sm font-medium transition-colors",
-            liked ? "text-brick-600" : "text-ink-soft hover:text-brick-600"
+            "inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition-all",
+            liked
+              ? "bg-rose-500/20 text-rose-400 border border-rose-500/40 shadow-[0_0_12px_rgba(225,29,72,0.3)]"
+              : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-rose-400 border border-white/5"
           )}
         >
-          <Heart className={cn("h-4 w-4", liked && "fill-current")} />
-          {count}
-        </button>
+          <Heart className={cn("h-4 w-4 transition-transform", liked && "fill-current scale-110")} />
+          <span>{count}</span>
+        </motion.button>
+
         <Link
           href={`/community/${id}`}
-          className="inline-flex items-center gap-1.5 rounded-[var(--radius-sm)] px-2 py-1 text-sm font-medium text-ink-soft hover:text-gold-700"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-white/5 px-3 py-1.5 font-medium text-white/70 hover:bg-white/10 hover:text-gold-400 border border-white/5 transition-all"
         >
           <MessageCircle className="h-4 w-4" />
-          {commentCount}
+          <span>{commentCount}</span>
         </Link>
+
         <button
           onClick={() => setReportOpen((v) => !v)}
-          className="ml-auto inline-flex items-center gap-1.5 rounded-[var(--radius-sm)] px-2 py-1 text-xs font-medium text-ink-faint hover:text-ink-soft"
+          className="ml-auto inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-white/40 hover:bg-white/5 hover:text-white/70 transition-colors"
           title="Report this post"
         >
           <Flag className="h-3.5 w-3.5" />
         </button>
       </div>
-      {error && <p className="mt-2 text-xs text-error">{error}</p>}
+
+      {error && <p className="mt-2 text-xs text-rose-400">{error}</p>}
 
       {reportOpen && (
-        <div className="mt-3 rounded-[var(--radius-sm)] border border-border bg-surface-sunken p-3">
+        <div className="mt-4 rounded-xl border border-white/10 bg-ink-950/90 p-4 backdrop-blur-md">
           {reportSent ? (
-            <p className="text-xs text-gold-700">
-              Thanks — a moderator will review this. You won't see this post reported again.
+            <p className="text-xs text-gold-400">
+              Report received. A moderator will review this promptly.
             </p>
           ) : (
             <>
-              <label className="block text-xs font-medium text-ink-soft">
+              <label className="block text-xs font-medium text-white/70 mb-2">
                 Why are you reporting this post?
               </label>
               <textarea
@@ -181,28 +197,28 @@ export function PostCard({
                 onChange={(e) => setReportReason(e.target.value)}
                 rows={2}
                 maxLength={400}
-                className="mt-1.5 block w-full resize-none rounded-[var(--radius-xs)] border border-border bg-surface px-2.5 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-gold-600 focus:outline-none"
+                className="w-full resize-none rounded-lg border border-white/10 bg-black/50 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-gold-500 focus:outline-none"
                 placeholder="Spam, harassment, misinformation…"
               />
-              <div className="mt-2 flex items-center gap-2">
+              <div className="mt-3 flex items-center gap-2">
                 <button
                   onClick={submitReport}
-                  className="rounded-[var(--radius-xs)] bg-brick-600 px-2.5 py-1 text-xs font-semibold text-white hover:bg-brick-500"
+                  className="rounded-lg bg-rose-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-rose-500 transition-colors"
                 >
                   Submit report
                 </button>
                 <button
                   onClick={() => setReportOpen(false)}
-                  className="text-xs font-medium text-ink-faint hover:text-ink-soft"
+                  className="text-xs font-medium text-white/50 hover:text-white transition-colors"
                 >
                   Cancel
                 </button>
               </div>
-              {reportError && <p className="mt-1.5 text-xs text-error">{reportError}</p>}
+              {reportError && <p className="mt-2 text-xs text-rose-400">{reportError}</p>}
             </>
           )}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
